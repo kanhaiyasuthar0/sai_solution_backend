@@ -5,7 +5,8 @@ const UserSchema = mongoose.Schema({
     last_name: String,
     email: {
         type: String,
-        required: true
+        required: true,
+        indexedDB: true
     },
     password: {
         type: String,

@@ -1,4 +1,5 @@
 const User = require("../Models/Users.models")
+const Site = require("../Models/Sites.models")
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
 
@@ -54,8 +55,21 @@ const signinUser = () => {
         }
     }
 }
+const uploadSiteData = () => {
+    return async (req, res) => {
+        try {
+            console.log(req.body)
+            const site = await Site.insertMany([req.body])
+            console.log(site)
+            res.send(site).status(201)
+        } catch (error) {
+            res.send(error).status(400)
+        }
+    }
+}
 
 module.exports = {
     registerUser,
-    signinUser
+    signinUser,
+    uploadSiteData
 }
