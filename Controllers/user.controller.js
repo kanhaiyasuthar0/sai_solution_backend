@@ -67,9 +67,20 @@ const uploadSiteData = () => {
         }
     }
 }
+const getSiteData = () => {
+    return async (req, res) => {
+        try {
+            const site = await Site.find({})
+            res.send(site).status(200)
+        } catch (error) {
+            res.send(error).status(400)
+        }
+    }
+}
 
 module.exports = {
     registerUser,
     signinUser,
-    uploadSiteData
+    uploadSiteData,
+    getSiteData
 }
