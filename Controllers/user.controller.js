@@ -67,6 +67,18 @@ const uploadSiteData = () => {
         }
     }
 }
+const editSiteData = () => {
+    return async (req, res) => {
+        try {
+            console.log(req.body)
+            const site = await Site.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true })
+            console.log(site)
+            res.send(site).status(201)
+        } catch (error) {
+            res.send(error).status(400)
+        }
+    }
+}
 const getSiteData = () => {
     return async (req, res) => {
         try {
@@ -82,5 +94,6 @@ module.exports = {
     registerUser,
     signinUser,
     uploadSiteData,
-    getSiteData
+    getSiteData,
+    editSiteData
 }

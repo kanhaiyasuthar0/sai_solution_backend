@@ -8,6 +8,7 @@ router.post("/login", userController.signinUser())
 //siteDetails
 router.post("/sitedetails", userController.uploadSiteData())
 router.get("/allsitedata", userController.getSiteData())
+router.put("/editSiteData", userController.editSiteData())
 
 
 module.exports = router
