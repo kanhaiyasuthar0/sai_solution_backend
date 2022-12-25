@@ -55,6 +55,26 @@ const signinUser = () => {
         }
     }
 }
+
+const checkUser = () => {
+    return async (req, res) => {
+        try {
+            let token = (req.body.token)
+            const user = await User.findOne({ email: req.body.email });
+            jwt.verify(token, process.env.SECRET, function (err, decoded) {
+                if (!err) {
+                    res.send({ email: req.body.email }).status(301)
+                } else {
+                    res.send(err).status(400)
+                }
+            });
+            console.log(site)
+            res.send(site).status(201)
+        } catch (error) {
+            res.send(error).status(400)
+        }
+    }
+}
 const uploadSiteData = () => {
     return async (req, res) => {
         try {
@@ -95,5 +115,6 @@ module.exports = {
     signinUser,
     uploadSiteData,
     getSiteData,
-    editSiteData
+    editSiteData,
+    checkUser
 }

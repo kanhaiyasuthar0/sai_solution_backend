@@ -4,6 +4,7 @@ const userController = require("../Controllers/user.controller")
 
 router.post("/register", userController.registerUser())
 router.post("/login", userController.signinUser())
+router.post("/checkuser", userController.checkUser())
 
 //siteDetails
 router.post("/sitedetails", userController.uploadSiteData())
