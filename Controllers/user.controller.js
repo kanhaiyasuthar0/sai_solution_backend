@@ -17,8 +17,6 @@ const registerUser = () => {
                         res.send(newUser).status(201)
                     });
                 });
-
-
             } else {
                 res.send(`${req.body.email} already exist. Please Signin`)
             }
@@ -68,8 +66,8 @@ const checkUser = () => {
                     res.send(err).status(400)
                 }
             });
-            console.log(site)
-            res.send(site).status(201)
+            // console.log(site)
+            // res.send(site).status(201)
         } catch (error) {
             res.send(error).status(400)
         }
