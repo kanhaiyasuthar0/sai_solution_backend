@@ -58,7 +58,7 @@ const signinUser = () => {
           }
         );
       } else {
-        res.send(`${req.body.email} already exist. Please Signin`).status(400);
+        throw new Error(`${req.body.email} already exist. Please Signin`);
       }
     } catch (error) {
       res.send(error);
