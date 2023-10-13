@@ -63,7 +63,7 @@ const signinUser = () => {
         res.status(400).send(`${req.body.email} already exist. Please Signin`);
       }
     } catch (error) {
-      res.send(error);
+      res.send(error).status(400);
     }
   };
 };
