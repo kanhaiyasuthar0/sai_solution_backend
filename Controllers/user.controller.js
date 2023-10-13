@@ -35,7 +35,7 @@ const signinUser = () => {
   return async (req, res) => {
     try {
       if (!req.body.email)
-        return res.status(400).json({ error: "provide a valid email" });
+        return res.status(400).send({ error: "provide a valid email" });
 
       const checkUser = await User.findOne({ email: req.body.email });
       if (checkUser) {
