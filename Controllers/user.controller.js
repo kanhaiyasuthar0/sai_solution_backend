@@ -34,6 +34,8 @@ const registerUser = () => {
 const signinUser = () => {
   return async (req, res) => {
     try {
+      if (!req.body.email) throw new Error("provide a valid email");
+
       const checkUser = await User.findOne({ email: req.body.email });
       if (checkUser) {
         bcrypt.compare(
@@ -58,7 +60,7 @@ const signinUser = () => {
           }
         );
       } else {
-        throw new Error(`${req.body.email} already exist. Please Signin`);
+        res.status(400).send(`${req.body.email} already exist. Please Signin`);
       }
     } catch (error) {
       res.send(error);
